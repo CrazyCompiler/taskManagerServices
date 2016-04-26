@@ -1,0 +1,390 @@
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52391: runtime error: invalid memory address or nil pointer dereference
+goroutine 7 [running]:
+net/http.(*conn).serve.func1(0xc8200da160, 0x68b768, 0xc82002e0e0)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200da370)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200da370, 0xc8200109a0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200da370, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200da370, 0xc8200109a0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200da370, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200da370, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da160)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52394: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1(0xc8200da420, 0x68b768, 0xc82002e120)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200da4d0)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200da4d0, 0xc820010a80)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200da4d0, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200da4d0, 0xc820010a80)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200da4d0, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200da4d0, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da420)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52396: runtime error: invalid memory address or nil pointer dereference
+goroutine 9 [running]:
+net/http.(*conn).serve.func1(0xc8200da580, 0x68b768, 0xc82002e128)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200da630)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200da630, 0xc820010b60)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200da630, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200da630, 0xc820010b60)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200da630, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200da630, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da580)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52398: runtime error: invalid memory address or nil pointer dereference
+goroutine 10 [running]:
+net/http.(*conn).serve.func1(0xc8200da6e0, 0x68b768, 0xc82002e130)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200da790)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200da790, 0xc820010c40)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200da790, 0xc820010c40)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200da790, 0xc820010c40)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200da790, 0xc820010c40)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200da790, 0xc820010c40)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da6e0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52400: runtime error: invalid memory address or nil pointer dereference
+goroutine 11 [running]:
+net/http.(*conn).serve.func1(0xc8200da840, 0x68b768, 0xc82002e138)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200da8f0)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200da8f0, 0xc820010d20)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200da8f0, 0xc820010d20)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200da8f0, 0xc820010d20)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200da8f0, 0xc820010d20)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200da8f0, 0xc820010d20)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da840)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52402: runtime error: invalid memory address or nil pointer dereference
+goroutine 12 [running]:
+net/http.(*conn).serve.func1(0xc8200da9a0, 0x68b768, 0xc82002e140)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200daa50)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200daa50, 0xc820010e00)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200daa50, 0xc820010e00)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200daa50, 0xc820010e00)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200daa50, 0xc820010e00)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200daa50, 0xc820010e00)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200da9a0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:26:32 http: panic serving 127.0.0.1:52405: runtime error: invalid memory address or nil pointer dereference
+goroutine 13 [running]:
+net/http.(*conn).serve.func1(0xc8200dab00, 0x68b768, 0xc82002e148)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200dabb0)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200dabb0, 0xc820010ee0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200dabb0, 0xc820010ee0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200dabb0, 0xc820010ee0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200dabb0, 0xc820010ee0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200dabb0, 0xc820010ee0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200dab00)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:28:12 http: panic serving 127.0.0.1:52417: runtime error: invalid memory address or nil pointer dereference
+goroutine 15 [running]:
+net/http.(*conn).serve.func1(0xc8200dae70, 0x68b768, 0xc82002e160)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200daf20)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200daf20, 0xc820011180)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200daf20, 0xc820011180)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200daf20, 0xc820011180)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200daf20, 0xc820011180)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200daf20, 0xc820011180)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200dae70)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 15:29:04 http: panic serving 127.0.0.1:52434: runtime error: invalid memory address or nil pointer dereference
+goroutine 18 [running]:
+net/http.(*conn).serve.func1(0xc8200db1e0, 0x68b768, 0xc82002e178)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200db290)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200db290, 0xc820011420)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200db290, 0xc820011420)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200db290, 0xc820011420)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200db290, 0xc820011420)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200db290, 0xc820011420)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200db1e0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52588: runtime error: invalid memory address or nil pointer dereference
+goroutine 20 [running]:
+net/http.(*conn).serve.func1(0xc8200db550, 0x68b768, 0xc82002e190)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200db760)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200db760, 0xc8200117a0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200db760, 0xc8200117a0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200db760, 0xc8200117a0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200db760, 0xc8200117a0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200db760, 0xc8200117a0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200db550)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52590: runtime error: invalid memory address or nil pointer dereference
+goroutine 21 [running]:
+net/http.(*conn).serve.func1(0xc8200db810, 0x68b768, 0xc82002e1a0)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200db8c0)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200db8c0, 0xc820011880)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200db8c0, 0xc820011880)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200db8c0, 0xc820011880)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200db8c0, 0xc820011880)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200db8c0, 0xc820011880)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200db810)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52592: runtime error: invalid memory address or nil pointer dereference
+goroutine 22 [running]:
+net/http.(*conn).serve.func1(0xc8200db970, 0x68b768, 0xc82002e1a8)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200dba20)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200dba20, 0xc820011960)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200dba20, 0xc820011960)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200dba20, 0xc820011960)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200dba20, 0xc820011960)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200dba20, 0xc820011960)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200db970)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52594: runtime error: invalid memory address or nil pointer dereference
+goroutine 23 [running]:
+net/http.(*conn).serve.func1(0xc8200dbad0, 0x68b768, 0xc82002e1b0)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200dbb80)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200dbb80, 0xc820011a40)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200dbb80, 0xc820011a40)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200dbb80, 0xc820011a40)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200dbb80, 0xc820011a40)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200dbb80, 0xc820011a40)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200dbad0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52596: runtime error: invalid memory address or nil pointer dereference
+goroutine 24 [running]:
+net/http.(*conn).serve.func1(0xc8200dbc30, 0x68b768, 0xc82002e1b8)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200dbce0)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200dbce0, 0xc820011b20)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200dbce0, 0xc820011b20)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200dbce0, 0xc820011b20)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200dbce0, 0xc820011b20)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200dbce0, 0xc820011b20)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200dbc30)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:21:43 http: panic serving 127.0.0.1:52599: runtime error: invalid memory address or nil pointer dereference
+goroutine 25 [running]:
+net/http.(*conn).serve.func1(0xc8200dbd90, 0x68b768, 0xc82002e1c0)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/models.UpdateFromCsv(0xc82002e020, 0xc820094320, 0x0, 0x68cc80, 0xc8200dbe40)
+	/Users/virajpa/work/src/taskManagerServices/models/tasks.go:68 +0x55
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200dbe40, 0xc820011c00)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:86 +0xb2
+net/http.HandlerFunc.ServeHTTP(0xc82000f1e0, 0x68cc80, 0xc8200dbe40, 0xc820011c00)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200dbe40, 0xc820011c00)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200dbe40, 0xc820011c00)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200dbe40, 0xc820011c00)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200dbd90)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:25:32 http: panic serving 127.0.0.1:52667: runtime error: invalid memory address or nil pointer dereference
+goroutine 6 [running]:
+net/http.(*conn).serve.func1(0xc8200d8000, 0x68b768, 0xc82002e0a8)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200d8210, 0xc8200107e0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:89 +0xcc
+net/http.HandlerFunc.ServeHTTP(0xc82000f200, 0x68cc80, 0xc8200d8210, 0xc8200107e0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200d8210, 0xc8200107e0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200d8210, 0xc8200107e0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200d8210, 0xc8200107e0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200d8000)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:25:32 http: panic serving 127.0.0.1:52669: runtime error: invalid memory address or nil pointer dereference
+goroutine 7 [running]:
+net/http.(*conn).serve.func1(0xc8200d82c0, 0x68b768, 0xc82002e110)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200d8370, 0xc8200108c0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:89 +0xcc
+net/http.HandlerFunc.ServeHTTP(0xc82000f200, 0x68cc80, 0xc8200d8370, 0xc8200108c0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200d8370, 0xc8200108c0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200d8370, 0xc8200108c0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200d8370, 0xc8200108c0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200d82c0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:25:32 http: panic serving 127.0.0.1:52671: runtime error: invalid memory address or nil pointer dereference
+goroutine 8 [running]:
+net/http.(*conn).serve.func1(0xc8200d8420, 0x68b768, 0xc82002e118)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200d84d0, 0xc8200109a0)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:89 +0xcc
+net/http.HandlerFunc.ServeHTTP(0xc82000f200, 0x68cc80, 0xc8200d84d0, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200d84d0, 0xc8200109a0)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200d84d0, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200d84d0, 0xc8200109a0)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200d8420)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:25:32 http: panic serving 127.0.0.1:52673: runtime error: invalid memory address or nil pointer dereference
+goroutine 9 [running]:
+net/http.(*conn).serve.func1(0xc8200d8580, 0x68b768, 0xc82002e120)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200d8630, 0xc820010a80)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:89 +0xcc
+net/http.HandlerFunc.ServeHTTP(0xc82000f200, 0x68cc80, 0xc8200d8630, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200d8630, 0xc820010a80)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200d8630, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200d8630, 0xc820010a80)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200d8580)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
+2016/04/26 16:25:32 http: panic serving 127.0.0.1:52676: runtime error: invalid memory address or nil pointer dereference
+goroutine 10 [running]:
+net/http.(*conn).serve.func1(0xc8200d86e0, 0x68b768, 0xc82002e128)
+	/usr/local/go/src/net/http/server.go:1287 +0xb5
+taskManagerServices/handlers.UploadCsv.func1(0x68cc80, 0xc8200d8790, 0xc820010b60)
+	/Users/virajpa/work/src/taskManagerServices/handlers/taskHandler.go:89 +0xcc
+net/http.HandlerFunc.ServeHTTP(0xc82000f200, 0x68cc80, 0xc8200d8790, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1422 +0x3a
+github.com/gorilla/mux.(*Router).ServeHTTP(0xc82006e500, 0x68cc80, 0xc8200d8790, 0xc820010b60)
+	/Users/virajpa/work/src/github.com/gorilla/mux/mux.go:103 +0x270
+net/http.(*ServeMux).ServeHTTP(0xc820014900, 0x68cc80, 0xc8200d8790, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1699 +0x17d
+net/http.serverHandler.ServeHTTP(0xc820018960, 0x68cc80, 0xc8200d8790, 0xc820010b60)
+	/usr/local/go/src/net/http/server.go:1862 +0x19e
+net/http.(*conn).serve(0xc8200d86e0)
+	/usr/local/go/src/net/http/server.go:1361 +0xbee
+created by net/http.(*Server).Serve
+	/usr/local/go/src/net/http/server.go:1910 +0x3f6
