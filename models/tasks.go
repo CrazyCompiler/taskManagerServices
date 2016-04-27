@@ -5,6 +5,7 @@ import (
 	"taskManagerServices/config"
 	"taskManagerServices/errorHandler"
 	"taskManagerServices/converters"
+	"taskManagerServices/fileReaders"
 )
 
 const (
@@ -41,7 +42,7 @@ func Delete(configObject config.ContextObject, taskId int) error {
 	return nil
 }
 
-func UpdatePriority(configObject config.ContextObject, taskId int, priority string)error{
+func UpdatePriority(configObject config.ContextObject, taskId int32, priority string)error{
 	_,err := configObject.Db.Exec(dbPriorityUpdateQuery, priority, taskId)
 	if err != nil {
 		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
@@ -50,7 +51,7 @@ func UpdatePriority(configObject config.ContextObject, taskId int, priority stri
 	return nil
 }
 
-func UpdateTaskDescription(configObject config.ContextObject, taskId int, data string)error{
+func UpdateTaskDescription(configObject config.ContextObject, taskId int32, data string)error{
 	_,err := configObject.Db.Exec(dbDescriptionUpdateQuery, data, taskId)
 	if err != nil {
 		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
@@ -59,3 +60,21 @@ func UpdateTaskDescription(configObject config.ContextObject, taskId int, data s
 	return nil
 }
 
+
+func AddTaskByCsv(configObject config.ContextObject,data string) error{
+	separatedData,err := fileReaders.ReadTaskCsv(data)
+	if err != nil {
+		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		return err
+	}
+
+	for _, each := range separatedData {
+		err := Add(configObject,each.TASK ,each.PRIORITY)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			return err
+		}
+	}
+
+	return  nil
+}

@@ -3,20 +3,27 @@ package handlers
 import (
 	"strings"
 	"strconv"
-	"fmt"
 	"net/http"
 	"taskManagerServices/config"
 	"taskManagerServices/models"
 	"taskManagerServices/errorHandler"
-	"taskManagerServices/fileReaders"
+	"github.com/golang/protobuf/proto"
+	"io/ioutil"
+	"github.com/CrazyCompiler/taskManagerContract"
 )
 
 func AddTask(configObject config.ContextObject) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		req.ParseForm()
-		taskDescription := strings.Join(req.Form["task"], "")
-		priority := strings.Join(req.Form["priority"], "")
-		err := models.Add(configObject, taskDescription, priority)
+		requestData, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		data := &contract.AddTask{}
+		err = proto.Unmarshal(requestData,data)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		err = models.Add(configObject, *data.Task, *data.Priority)
 		if err != nil {
 			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			res.WriteHeader(http.StatusInternalServerError)
@@ -49,11 +56,16 @@ func DeleteTask(configObject config.ContextObject) http.HandlerFunc {
 
 func UpdateTaskPriority(configObject config.ContextObject)http.HandlerFunc{
 	return func(res http.ResponseWriter,req *http.Request) {
-		req.ParseForm()
-		taskId := strings.Join(req.Form["taskId"], "")
-		priority := strings.Join(req.Form["priority"], "")
-		id,_ := strconv.Atoi(taskId)
-		err := models.UpdatePriority(configObject, id,priority)
+		requestData, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		data := &contract.UpdatePriority{}
+		err = proto.Unmarshal(requestData,data)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		err = models.UpdatePriority(configObject, *data.TaskId, *data.Priority)
 		if err != nil {
 			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			res.WriteHeader(http.StatusInternalServerError)
@@ -64,11 +76,16 @@ func UpdateTaskPriority(configObject config.ContextObject)http.HandlerFunc{
 
 func UpdateTaskDescription(configObject config.ContextObject)http.HandlerFunc{
 	return func(res http.ResponseWriter,req *http.Request) {
-		req.ParseForm()
-		taskId := strings.Join(req.Form["taskId"], "")
-		data := strings.Join(req.Form["data"], "")
-		id,_ := strconv.Atoi(taskId)
-		err := models.UpdateTaskDescription(configObject, id,data)
+		requestData, err := ioutil.ReadAll(req.Body)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		data := &contract.UpdateTaskDescription{}
+		err = proto.Unmarshal(requestData,data)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		}
+		err = models.UpdateTaskDescription(configObject, *data.TaskId, *data.Data)
 		if err != nil {
 			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			res.WriteHeader(http.StatusInternalServerError)
@@ -77,45 +94,22 @@ func UpdateTaskDescription(configObject config.ContextObject)http.HandlerFunc{
 	}
 }
 
-
 func UploadCsv(configObject config.ContextObject) http.HandlerFunc{
 	return func(res http.ResponseWriter,req *http.Request) {
-		err := req.ParseMultipartForm(32 << 20)
+		requestData, err := ioutil.ReadAll(req.Body)
 		if err != nil {
 			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 		}
-		m := req.MultipartForm
-
-		files := m.File["uploadFile"]
-
-		for i,_ := range files{
-			file,err := files[i].Open()
-			defer file.Close()
-			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
-			}
-			b1 := make([]byte, 32 << 20)
-			_,err = file.Read(b1)
-			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
-			}
-			separatedData,err := fileReaders.ReadTaskCsv(string(b1))
-			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
-				fmt.Fprint(res,err.Error())
-				res.WriteHeader(http.StatusBadRequest)
-			}
-
-			for _, each := range separatedData {
-				err := models.Add(configObject,each.TASK ,each.PRIORITY)
-				if err != nil {
-					errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
-					res.WriteHeader(http.StatusInternalServerError)
-					return
-				}
-			}
-			res.WriteHeader(http.StatusCreated)
+		data := &contract.UploadCsvData{}
+		err = proto.Unmarshal(requestData,data)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 		}
+		err = models.AddTaskByCsv(configObject,string(*data.CsvData))
+		if err != nil {
+			res.WriteHeader(http.StatusInternalServerError)
+		}
+		res.WriteHeader(http.StatusOK)
 	}
 }
 

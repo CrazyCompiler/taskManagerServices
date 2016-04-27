@@ -1,4 +1,5 @@
-package: taskManager
+package: taskManagerServices
 import:
 - package: github.com/gorilla/mux
 - package: github.com/lib/pq
+- package: github.com/CrazyCompiler/taskManagerContract
