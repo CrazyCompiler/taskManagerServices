@@ -4,7 +4,7 @@ import (
 	"testing"
 	sqlmock "github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
-	"taskManager/config"
+	"taskManagerServices/config"
 	"os"
 )
 
@@ -64,6 +64,50 @@ func TestDelete(t *testing.T) {
 	contextObject.Db = db
 
 	Delete(contextObject,taskId)
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("there were unfulfilled expections: %s", err)
+	}
+}
+
+func TestUpdatePriority(t *testing.T) {
+	db,mock, err := sqlmock.New()
+	assert.Nil(t,err)
+
+	taskId := 1
+	priority := "High"
+
+	mock.ExpectExec("update tasks set ").
+	WithArgs(priority,int32(taskId)).
+	WillReturnResult(sqlmock.NewResult(0, 1))
+
+	contextObject := config.ContextObject{}
+	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
+	contextObject.Db = db
+
+	UpdatePriority(contextObject,int32(taskId),priority)
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("there were unfulfilled expections: %s", err)
+	}
+}
+
+func TestUpdateTaskDescription(t *testing.T) {
+	db,mock, err := sqlmock.New()
+	assert.Nil(t,err)
+
+	taskId := 1
+	data := "Drink water"
+
+	mock.ExpectExec("update tasks set ").
+	WithArgs(data,int32(taskId)).
+	WillReturnResult(sqlmock.NewResult(0, 1))
+
+	contextObject := config.ContextObject{}
+	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
+	contextObject.Db = db
+
+	UpdateTaskDescription(contextObject,int32(taskId),data)
 
 	if err := mock.ExpectationsWereMet(); err != nil {
 		t.Errorf("there were unfulfilled expections: %s", err)

@@ -5,7 +5,11 @@ import (
 	"net/http/httptest"
 	"net/http"
 	"github.com/DATA-DOG/go-sqlmock"
+	"taskManagerServices/config"
+	"os"
 )
+
+const errorFileName string = "dummyErrorLogForTaskHandlerTest"
 
 func TestGetTasks(t *testing.T) {
 	db, mock, err := sqlmock.New()
@@ -13,8 +17,17 @@ func TestGetTasks(t *testing.T) {
 		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
 	}
 	defer db.Close()
-	getHandler := GetTasks(db)
-	mock.ExpectQuery("select taskId,task,priority from tasks").WillReturnRows(sqlmock.NewRows([]string{"som"}))
+
+	configObject := config.ContextObject{}
+	errorFile, err := os.OpenFile(errorFileName, os.O_APPEND|os.O_WRONLY, 0600)
+	if err != nil {
+		panic(err)
+	}
+	defer errorFile.Close()
+
+	configObject.ErrorLogFile = errorFile
+	configObject.Db = db
+	getHandler := GetTasks(configObject)
 	req, _ := http.NewRequest("GET", "/getAllTasks", nil)
 	w := httptest.NewRecorder()
 	getHandler.ServeHTTP(w, req)
@@ -24,5 +37,12 @@ func TestGetTasks(t *testing.T) {
 	if w.Code != http.StatusOK {
 		t.Errorf("Home page didn't return %v", http.StatusOK)
 	}
-
 }
+
+
+
+
+
+
+
+
