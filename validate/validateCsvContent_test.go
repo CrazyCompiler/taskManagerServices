@@ -2,14 +2,26 @@ package validate
 
 import "testing"
 
-func TestIsValidPriority(t *testing.T) {
-	permission := IsValidPriority("High")
-	if permission != true{
-		t.Errorf("Permission should be true but it is false")
+func TestValidateAllEntry(t *testing.T) {
+	sampleEntries := [][]string{{"drinking","High"},
+		{"coding","Medium"},
+		{""}}
+	err := ValidateAllEntry(sampleEntries)
+
+	if err != nil {
+		t.Errorf("expected err will be nil but error is %s",err.Error())
 	}
 
-	permission = IsValidPriority("India")
-	if permission != false{
-		t.Errorf("Permission should be false but it is true")
+	sampleEntries = [][]string{{"drinking","High"},
+		{"","Medium"},
+		{"sleeping","Hello"},
+		{"coocking","Low"},
+		{""}}
+
+	err = ValidateAllEntry(sampleEntries)
+
+	if err.Error() != "Errors in the following lines 2,3"{
+		t.Errorf("err suppose to be Errors in the following lines 2,3 but it is %s",err.Error())
 	}
+
 }

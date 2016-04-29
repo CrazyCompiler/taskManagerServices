@@ -9,7 +9,7 @@ import (
 	"taskManagerServices/errorHandler"
 	"github.com/golang/protobuf/proto"
 	"io/ioutil"
-	"github.com/taskManagerContract"
+	"github.com/CrazyCompiler/taskManagerContract"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
