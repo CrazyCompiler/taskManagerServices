@@ -21,7 +21,7 @@ func ReadTaskCsv(fileData string) ([]TableContent,error) {
 	rawCSVdata, err := reader.ReadAll()
 
 	err = validate.ValidateAllEntry(rawCSVdata)
-	if err!=nil {
+	if err != nil {
 		return dataArray,err
 	}
 
