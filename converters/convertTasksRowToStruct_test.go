@@ -2,10 +2,11 @@ package converters
 
 import (
 	"testing"
-	"github.com/DATA-DOG/go-sqlmock"
+	"database/sql"
 )
 
 func TestConvertRowsToStructObjects(t *testing.T) {
-	rows := sqlmock.NewRows([]string{"Have water","High"})
+
+	rows := &sql.Rows{}
 	ConvertRowsToStructObjects(rows)
 }
