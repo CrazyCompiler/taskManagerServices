@@ -14,7 +14,7 @@ func ValidateAllEntry(allEntry [][]string)  error{
 		}
 		count++
 	}
-	if len(errorLineNumbers)>1{
+	if len(errorLineNumbers)>=1{
 		return errors.New("Errors in the following lines"+linesInString(errorLineNumbers))
 	}
 	return nil
@@ -22,7 +22,7 @@ func ValidateAllEntry(allEntry [][]string)  error{
 
 func linesInString(linesNumber []int) string  {
 	lines := " "+strconv.Itoa(linesNumber[0])
-	for  i := 1;i< len(linesNumber)-1;i++{
+	for  i := 1;i< len(linesNumber);i++{
 		lines = lines +"," +strconv.Itoa(linesNumber[i])
 	}
 	return lines
