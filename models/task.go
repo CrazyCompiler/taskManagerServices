@@ -9,10 +9,10 @@ type Task struct {
 	taskDescription,priority string
 }
 
-func(task *Task) Create(configObject config.ContextObject)error{
-	_,err := configObject.Db.Exec(dbInsertQuery, task.taskDescription, task.priority)
+func(task *Task) Create(context config.Context)error{
+	_,err := context.Db.Exec(dbInsertQuery, task.taskDescription, task.priority)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		return err
 	}
 	return nil

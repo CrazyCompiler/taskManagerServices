@@ -22,23 +22,23 @@ func responseGenerator(status int,errorBody string) (contract.Response){
 	return response
 }
 
-func AddTask(configObject config.ContextObject) http.HandlerFunc {
+func AddTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
 		requestData, err := ioutil.ReadAll(req.Body)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
 		data := &contract.Task{}
 		err = proto.Unmarshal(requestData,data)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.Add(configObject, *data.Task, *data.Priority)
+		err = models.Add(context, *data.Task, *data.Priority)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.WriteHeader(http.StatusInternalServerError)
 			res.Write(dataToBeSend)
@@ -48,14 +48,14 @@ func AddTask(configObject config.ContextObject) http.HandlerFunc {
 	}
 }
 
-func GetTasks(configObject config.ContextObject) http.HandlerFunc {
+func GetTasks(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		data,err := models.Get(configObject)
+		data,err := models.Get(context)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
@@ -64,7 +64,7 @@ func GetTasks(configObject config.ContextObject) http.HandlerFunc {
 		response.Bytedata = data
 		dataToBeSend,err :=  proto.Marshal(&response)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			return
 		}
 		res.WriteHeader(http.StatusOK)
@@ -72,17 +72,17 @@ func GetTasks(configObject config.ContextObject) http.HandlerFunc {
 	}
 }
 
-func DeleteTask(configObject config.ContextObject) http.HandlerFunc {
+func DeleteTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter,req *http.Request) {
 		req.ParseForm()
 		taskId := strings.Split(req.RequestURI,"/")[2]
 		task,err := strconv.Atoi(taskId)
-		err = models.Delete(configObject,task)
+		err = models.Delete(context,task)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.WriteHeader(http.StatusInternalServerError)
 			res.Write(dataToBeSend)
@@ -92,23 +92,23 @@ func DeleteTask(configObject config.ContextObject) http.HandlerFunc {
 	}
 }
 
-func UpdateTask(configObject config.ContextObject)http.HandlerFunc{
+func UpdateTask(context config.Context)http.HandlerFunc{
 	return func(res http.ResponseWriter,req *http.Request) {
 		requestData, err := ioutil.ReadAll(req.Body)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
 		data := &contract.Task{}
 		err = proto.Unmarshal(requestData,data)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.Update(configObject, *data.TaskId, *data.Task,*data.Priority)
+		err = models.Update(context, *data.TaskId, *data.Task,*data.Priority)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.WriteHeader(http.StatusInternalServerError)
 			res.Write(dataToBeSend)
@@ -118,23 +118,23 @@ func UpdateTask(configObject config.ContextObject)http.HandlerFunc{
 	}
 }
 
-func UploadCsv(configObject config.ContextObject) http.HandlerFunc{
+func UploadCsv(context config.Context) http.HandlerFunc{
 	return func(res http.ResponseWriter,req *http.Request) {
 		requestData, err := ioutil.ReadAll(req.Body)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
 		data := &contract.UploadCsvData{}
 		err = proto.Unmarshal(requestData,data)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.AddTaskByCsv(configObject,string(*data.CsvData))
+		err = models.AddTaskByCsv(context,string(*data.CsvData))
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.Write(dataToBeSend)
 			return
@@ -143,14 +143,14 @@ func UploadCsv(configObject config.ContextObject) http.HandlerFunc{
 	}
 }
 
-func DownloadCsv(configObject config.ContextObject) http.HandlerFunc {
+func DownloadCsv(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		data,err := models.GetCsv(configObject)
+		data,err := models.GetCsv(context)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
 			if err != nil {
-				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+				errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			}
 			res.WriteHeader(http.StatusInternalServerError)
 			res.Write(dataToBeSend)
@@ -161,7 +161,7 @@ func DownloadCsv(configObject config.ContextObject) http.HandlerFunc {
 		response.Bytedata = data
 		dataToBeSend,err :=  proto.Marshal(&response)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			return
 		}
 		res.WriteHeader(http.StatusOK)

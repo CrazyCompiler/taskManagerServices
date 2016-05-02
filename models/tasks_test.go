@@ -16,7 +16,7 @@ func TestGet(t *testing.T) {
 	rows := sqlmock.NewRows([]string{"hello","High"})
 	mock.ExpectQuery("select taskId,task,priority from tasks;").WillReturnRows(rows)
 
-	contextObject := config.ContextObject{}
+	contextObject := config.Context{}
 	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	contextObject.Db = db
 
@@ -38,7 +38,7 @@ func TestAdd(t *testing.T) {
 	WithArgs(task,priority).
 	WillReturnResult(sqlmock.NewResult(1, 1))
 
-	contextObject := config.ContextObject{}
+	contextObject := config.Context{}
 	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	contextObject.Db = db
 
@@ -59,7 +59,7 @@ func TestDelete(t *testing.T) {
 	WithArgs(taskId).
 	WillReturnResult(sqlmock.NewResult(1, 1))
 
-	contextObject := config.ContextObject{}
+	contextObject := config.Context{}
 	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	contextObject.Db = db
 
@@ -82,7 +82,7 @@ func TestUpdate(t *testing.T) {
 	WithArgs(taskDescription,priority,int32(taskId)).
 	WillReturnResult(sqlmock.NewResult(0, 1))
 
-	contextObject := config.ContextObject{}
+	contextObject := config.Context{}
 	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	contextObject.Db = db
 

@@ -17,53 +17,53 @@ const (
 )
 
 
-func Get(configObject config.ContextObject) ([]byte,error) {
-	rows, err := configObject.Db.Query(dbSelectQuery)
+func Get(context config.Context) ([]byte,error) {
+	rows, err := context.Db.Query(dbSelectQuery)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}
 	dbData := converters.ToStructObjects(rows)
 	data, err := json.Marshal(dbData)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}
 	return data,err
 }
 
-func Add(configObject config.ContextObject, taskDescription string, priority string) error {
+func Add(context config.Context, taskDescription string, priority string) error {
 	task := Task{taskDescription,priority}
-	return task.Create(configObject)
+	return task.Create(context)
 }
 
-func Delete(configObject config.ContextObject, taskId int) error {
-	_,err := configObject.Db.Exec(dbDeleteQuery,taskId)
+func Delete(context config.Context, taskId int) error {
+	_,err := context.Db.Exec(dbDeleteQuery,taskId)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func Update(configObject config.ContextObject, taskId int32, data string, priority string)error{
-	_,err := configObject.Db.Exec(dbUpdateQuery, data, priority,taskId)
+func Update(context config.Context, taskId int32, data string, priority string)error{
+	_,err := context.Db.Exec(dbUpdateQuery, data, priority,taskId)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		return err
 	}
 	return nil
 }
 
 
-func AddTaskByCsv(configObject config.ContextObject,data string) error{
+func AddTaskByCsv(context config.Context,data string) error{
 	separatedData,err := fileReaders.ReadTaskCsv(data)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		return err
 	}
 
 	for _, each := range separatedData {
-		err := Add(configObject,each.TASK ,each.PRIORITY)
+		err := Add(context,each.TASK ,each.PRIORITY)
 		if err != nil {
-			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			return err
 		}
 	}
@@ -79,10 +79,10 @@ func (w *Wr) Write(b []byte) (int, error) {
 	return len(w.buf), nil
 }
 
-func GetCsv(configObject config.ContextObject) ([]byte,error) {
-	rows, err := configObject.Db.Query(dbSelectQuery)
+func GetCsv(context config.Context) ([]byte,error) {
+	rows, err := context.Db.Query(dbSelectQuery)
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}
 	dbData := converters.ToArrayOfString(rows)
 	wrt := &Wr{}

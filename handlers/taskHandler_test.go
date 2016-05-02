@@ -18,7 +18,7 @@ func TestGetTasks(t *testing.T) {
 	}
 	defer db.Close()
 
-	configObject := config.ContextObject{}
+	configObject := config.Context{}
 	errorFile, err := os.OpenFile(errorFileName, os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
 		panic(err)

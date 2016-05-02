@@ -5,7 +5,7 @@ import (
 	"database/sql"
 )
 
-type ContextObject struct {
+type Context struct {
 	ErrorLogFile *os.File
 	Db *sql.DB
 }

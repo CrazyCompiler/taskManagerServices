@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	configObject := config.ContextObject{}
+	context := config.Context{}
 	errorLogFilePath := "errorLog"
 	errorFile, err := os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	if err != nil {
@@ -22,7 +22,7 @@ func main() {
 	}
 	defer errorFile.Close()
 
-	configObject.ErrorLogFile = errorFile
+	context.ErrorLogFile = errorFile
 
 	dbConfigFilePath := "dbConfigFile"
 	if len(os.Args) > 1 {
@@ -31,20 +31,20 @@ func main() {
 	dbConfigDataJson := fileReaders.ReadJsonFile(dbConfigFilePath)
 	dbinfo := database.CreateDbInfo(dbConfigDataJson)
 
-	configObject.Db, err = sql.Open("postgres", dbinfo)
+	context.Db, err = sql.Open("postgres", dbinfo)
 
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}
 
-	configObject.Db.Ping()
+	context.Db.Ping()
 
 	if err != nil {
-		errorHandler.ErrorHandler(configObject.ErrorLogFile, err)
+		errorHandler.ErrorHandler(context.ErrorLogFile, err)
 	}
 
-	defer configObject.Db.Close()
-	routers.HandleRequests(configObject)
+	defer context.Db.Close()
+	routers.HandleRequests(context)
 
 	err = http.ListenAndServe(":8080", nil)
 	if err != nil {
