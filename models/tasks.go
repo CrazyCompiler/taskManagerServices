@@ -43,7 +43,7 @@ func Delete(context config.Context, taskId int) error {
 	return nil
 }
 
-func Update(context config.Context, taskId int32, data string, priority string)error{
+func Update(context config.Context, taskId int, data string, priority string)error{
 	_,err := context.Db.Exec(dbUpdateQuery, data, priority,taskId)
 	if err != nil {
 		errorHandler.ErrorHandler(context.ErrorLogFile,err)

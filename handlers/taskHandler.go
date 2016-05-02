@@ -9,7 +9,7 @@ import (
 	"taskManagerServices/errorHandler"
 	"github.com/golang/protobuf/proto"
 	"io/ioutil"
-	"github.com/taskManagerContract"
+	"github.com/CrazyCompiler/taskManagerContract"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
@@ -60,8 +60,8 @@ func GetTasks(context config.Context) http.HandlerFunc {
 			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
 		}
-		response := contract.GetTasks{}
-		response.Bytedata = data
+		response := contract.Response{}
+		response.Data = []byte(data)
 		dataToBeSend,err :=  proto.Marshal(&response)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
@@ -103,7 +103,13 @@ func UpdateTask(context config.Context)http.HandlerFunc{
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.Update(context, *data.TaskId, *data.Task,*data.Priority)
+		taskId := strings.Split(req.RequestURI,"/")[2]
+		task,err := strconv.Atoi(taskId)
+
+		if err != nil {
+			errorHandler.ErrorHandler(context.ErrorLogFile,err)
+		}
+		err = models.Update(context, task, *data.Task,*data.Priority)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -124,12 +130,12 @@ func UploadCsv(context config.Context) http.HandlerFunc{
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		data := &contract.UploadCsvData{}
+		data := &contract.Upload{}
 		err = proto.Unmarshal(requestData,data)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.AddTaskByCsv(context,string(*data.CsvData))
+		err = models.AddTaskByCsv(context,string(data.Data))
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -157,8 +163,8 @@ func DownloadCsv(context config.Context) http.HandlerFunc {
 			return
 		}
 
-		response := contract.GetTasks{}
-		response.Bytedata = data
+		response := contract.Response{}
+		response.Data = data
 		dataToBeSend,err :=  proto.Marshal(&response)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
