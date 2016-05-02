@@ -40,8 +40,9 @@ func AddTask(configObject config.ContextObject) http.HandlerFunc {
 			if err != nil {
 				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			}
-			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
+			res.Write(dataToBeSend)
+			return 
 		}
 		res.WriteHeader(http.StatusCreated)
 	}
@@ -59,8 +60,15 @@ func GetTasks(configObject config.ContextObject) http.HandlerFunc {
 			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
 		}
+		response := contract.GetTasks{}
+		response.Bytedata = data
+		dataToBeSend,err :=  proto.Marshal(&response)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			return
+		}
 		res.WriteHeader(http.StatusOK)
-		res.Write(data)
+		res.Write(dataToBeSend)
 	}
 }
 
@@ -76,8 +84,9 @@ func DeleteTask(configObject config.ContextObject) http.HandlerFunc {
 			if err != nil {
 				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			}
-			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
+			res.Write(dataToBeSend)
+			return
 		}
 		res.WriteHeader(http.StatusAccepted)
 	}
@@ -101,8 +110,9 @@ func UpdateTask(configObject config.ContextObject)http.HandlerFunc{
 			if err != nil {
 				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			}
-			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
+			res.Write(dataToBeSend)
+			return
 		}
 		res.WriteHeader(http.StatusCreated)
 	}
@@ -127,6 +137,7 @@ func UploadCsv(configObject config.ContextObject) http.HandlerFunc{
 				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			}
 			res.Write(dataToBeSend)
+			return
 		}
 		res.WriteHeader(http.StatusOK)
 	}
@@ -141,11 +152,20 @@ func DownloadCsv(configObject config.ContextObject) http.HandlerFunc {
 			if err != nil {
 				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 			}
-			res.Write(dataToBeSend)
 			res.WriteHeader(http.StatusInternalServerError)
+			res.Write(dataToBeSend)
+			return
+		}
+
+		response := contract.GetTasks{}
+		response.Bytedata = data
+		dataToBeSend,err :=  proto.Marshal(&response)
+		if err != nil {
+			errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			return
 		}
 		res.WriteHeader(http.StatusOK)
-		res.Write(data)
+		res.Write(dataToBeSend)
 	}
 }
 
