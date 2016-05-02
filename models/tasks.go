@@ -6,6 +6,7 @@ import (
 	"taskManagerServices/errorHandler"
 	"taskManagerServices/converters"
 	"taskManagerServices/fileReaders"
+	"encoding/csv"
 )
 
 const (
@@ -21,7 +22,7 @@ func Get(configObject config.ContextObject) ([]byte,error) {
 	if err != nil {
 		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
 	}
-	dbData := converters.ConvertRowsToStructObjects(rows)
+	dbData := converters.ToStructObjects(rows)
 	data, err := json.Marshal(dbData)
 	if err != nil {
 		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
@@ -66,6 +67,28 @@ func AddTaskByCsv(configObject config.ContextObject,data string) error{
 			return err
 		}
 	}
-
 	return  nil
+}
+
+type Wr struct {
+	buf []byte
+}
+
+func (w *Wr) Write(b []byte) (int, error) {
+	w.buf = append(w.buf, b...)
+	return len(w.buf), nil
+}
+
+func GetCsv(configObject config.ContextObject) ([]byte,error) {
+	rows, err := configObject.Db.Query(dbSelectQuery)
+	if err != nil {
+		errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+	}
+	dbData := converters.ToArrayOfString(rows)
+	wrt := &Wr{}
+	w := csv.NewWriter(wrt)
+	w.WriteAll(dbData)
+	w.Flush()
+	err = w.Error()
+	return 	wrt.buf,err
 }

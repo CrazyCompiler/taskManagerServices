@@ -8,5 +8,5 @@ import (
 func TestConvertRowsToStructObjects(t *testing.T) {
 
 	rows := &sql.Rows{}
-	ConvertRowsToStructObjects(rows)
+	ToStructObjects(rows)
 }

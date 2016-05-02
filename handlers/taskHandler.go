@@ -9,7 +9,7 @@ import (
 	"taskManagerServices/errorHandler"
 	"github.com/golang/protobuf/proto"
 	"io/ioutil"
-	"github.com/CrazyCompiler/taskManagerContract"
+	"github.com/taskManagerContract"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
@@ -129,6 +129,23 @@ func UploadCsv(configObject config.ContextObject) http.HandlerFunc{
 			res.Write(dataToBeSend)
 		}
 		res.WriteHeader(http.StatusOK)
+	}
+}
+
+func DownloadCsv(configObject config.ContextObject) http.HandlerFunc {
+	return func(res http.ResponseWriter, req *http.Request) {
+		data,err := models.GetCsv(configObject)
+		if err != nil {
+			resp := responseGenerator(http.StatusInternalServerError,err.Error())
+			dataToBeSend,err :=  proto.Marshal(&resp)
+			if err != nil {
+				errorHandler.ErrorHandler(configObject.ErrorLogFile,err)
+			}
+			res.Write(dataToBeSend)
+			res.WriteHeader(http.StatusInternalServerError)
+		}
+		res.WriteHeader(http.StatusOK)
+		res.Write(data)
 	}
 }
 
