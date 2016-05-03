@@ -1,15 +1,15 @@
 package handlers
 
 import (
+	"io/ioutil"
 	"strings"
 	"strconv"
-	"net/http"
 	"taskManagerServices/config"
-	"taskManagerServices/models"
+	"net/http"
 	"taskManagerServices/errorHandler"
 	"github.com/golang/protobuf/proto"
-	"io/ioutil"
-	"github.com/CrazyCompiler/taskManagerContract"
+	"taskManagerServices/models"
+	"taskManagerServices/vendor/github.com/CrazyCompiler/taskManagerContract"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
@@ -33,7 +33,10 @@ func AddTask(context config.Context) http.HandlerFunc {
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.Add(context, *data.Task, *data.Priority)
+		newTask := models.Task{}
+		newTask.TaskDescription = *data.Task
+		newTask.Priority = *data.Priority
+		err = newTask.Create(context)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -76,8 +79,10 @@ func DeleteTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter,req *http.Request) {
 		req.ParseForm()
 		taskId := strings.Split(req.RequestURI,"/")[2]
-		task,err := strconv.Atoi(taskId)
-		err = models.Delete(context,task)
+		id,err := strconv.Atoi(taskId)
+		taskToDelete := models.Task{}
+		taskToDelete.TaskId = id
+		err = taskToDelete.Delete(context)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -104,12 +109,16 @@ func UpdateTask(context config.Context)http.HandlerFunc{
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
 		taskId := strings.Split(req.RequestURI,"/")[2]
-		task,err := strconv.Atoi(taskId)
+		id,err := strconv.Atoi(taskId)
 
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.Update(context, task, *data.Task,*data.Priority)
+		taskToUpdate := models.Task{}
+		taskToUpdate.TaskId = id
+		taskToUpdate.TaskDescription = *data.Task
+		taskToUpdate.Priority = *data.Priority
+		err = taskToUpdate.Update(context)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)

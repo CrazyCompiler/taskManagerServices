@@ -11,9 +11,7 @@ import (
 
 const (
 	dbSelectQuery string = "select taskId,task,priority from tasks;"
-	dbInsertQuery string = "insert into tasks(task,priority)  VALUES($1,$2) returning taskId;"
-	dbDeleteQuery string = "delete from tasks where taskId=$1"
-	dbUpdateQuery string = "update tasks set task=$1,priority=$2 where taskID=$3;"
+
 )
 
 
@@ -30,29 +28,6 @@ func Get(context config.Context) ([]byte,error) {
 	return data,err
 }
 
-func Add(context config.Context, taskDescription string, priority string) error {
-	task := Task{taskDescription,priority}
-	return task.Create(context)
-}
-
-func Delete(context config.Context, taskId int) error {
-	_,err := context.Db.Exec(dbDeleteQuery,taskId)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func Update(context config.Context, taskId int, data string, priority string)error{
-	_,err := context.Db.Exec(dbUpdateQuery, data, priority,taskId)
-	if err != nil {
-		errorHandler.ErrorHandler(context.ErrorLogFile,err)
-		return err
-	}
-	return nil
-}
-
-
 func AddTaskByCsv(context config.Context,data string) error{
 	separatedData,err := fileReaders.ReadTaskCsv(data)
 	if err != nil {
@@ -61,7 +36,10 @@ func AddTaskByCsv(context config.Context,data string) error{
 	}
 
 	for _, each := range separatedData {
-		err := Add(context,each.TASK ,each.PRIORITY)
+		newTask := Task{}
+		newTask.TaskDescription = each.TASK
+		newTask.Priority=each.PRIORITY
+		err := newTask.Create(context)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			return err
