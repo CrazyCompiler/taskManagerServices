@@ -10,6 +10,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"io/ioutil"
 	"github.com/CrazyCompiler/taskManagerContract"
+	"encoding/csv"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
@@ -149,9 +150,24 @@ func UploadCsv(context config.Context) http.HandlerFunc{
 	}
 }
 
+type Wr struct {
+	buf []byte
+}
+
+func (w *Wr) Write(b []byte) (int, error) {
+	w.buf = append(w.buf, b...)
+	return len(w.buf), nil
+}
+
 func DownloadCsv(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		data,err := models.GetCsv(context)
+		dbData,err := models.GetCsv(context)
+		wrt := &Wr{}
+		w := csv.NewWriter(wrt)
+		w.WriteAll(dbData)
+		w.Flush()
+		err = w.Error()
+
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -164,7 +180,7 @@ func DownloadCsv(context config.Context) http.HandlerFunc {
 		}
 
 		response := contract.Response{}
-		response.Data = data
+		response.Data = wrt.buf
 		dataToBeSend,err :=  proto.Marshal(&response)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
