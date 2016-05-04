@@ -5,37 +5,44 @@ import (
 	"strconv"
 )
 
-func ValidateAllEntry(allEntry [][]string)  error{
-	errorLineNumbers := []int{}
-	count := 1;
-	for _, each := range allEntry{
-		if isValidNoOfColumn(each)==false|| isNotEmptyTheTaskDescription(each[0])==false || isValidPriority(each[1])==false {
-			errorLineNumbers = append(errorLineNumbers,count)
+type Validator interface  {
+	IsValid(EachRow []string) bool
+}
+
+type ValidNoOfColumn struct  {
+}
+
+func (c ValidNoOfColumn)IsValid(EachRow []string) bool {
+	return len(EachRow)==2
+}
+
+type TaskDescriptionChecker struct  {
+}
+
+func (c TaskDescriptionChecker)IsValid(EachRow []string)bool  {
+	return EachRow[0] != ""
+}
+
+type PriorityChecker struct  {
+}
+
+func (c PriorityChecker)IsValid(EachRow []string) bool {
+	return EachRow[1]=="High" || EachRow[1] == "Medium" || EachRow[1] == "Low"
+}
+
+func ValidateAllEntry(allEntry [][]string, allValidators []Validator) error {
+	s := ""
+	count := 1
+	for _,eachEntry := range allEntry {
+		for _,eachValidator :=range allValidators{
+			if eachValidator.IsValid(eachEntry)==false {
+				s =s + strconv.Itoa(count)+" "
+			}
 		}
 		count++
 	}
-	if len(errorLineNumbers)>=1{
-		return errors.New("Errors in the following lines"+linesInString(errorLineNumbers))
+	if s!="" {
+		return errors.New("errors in the following line : "+s)
 	}
 	return nil
 }
-
-func linesInString(linesNumber []int) string  {
-	lines := " "+strconv.Itoa(linesNumber[0])
-	for  i := 1;i< len(linesNumber);i++{
-		lines = lines +"," +strconv.Itoa(linesNumber[i])
-	}
-	return lines
-}
-
-func isNotEmptyTheTaskDescription(task string) bool {
-	return task != ""
-}
-
-func isValidNoOfColumn(eachEntry []string) bool {
-	return len(eachEntry)==2
-}
-func isValidPriority(priority string) bool{
-	return priority=="High" || priority == "Medium" || priority == "Low"
-}
-
