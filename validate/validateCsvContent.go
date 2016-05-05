@@ -5,37 +5,63 @@ import (
 	"strconv"
 )
 
-func ValidateAllEntry(allEntry [][]string)  error{
-	errorLineNumbers := []int{}
-	count := 1;
-	for _, each := range allEntry{
-		if isValidNoOfColumn(each)==false|| isNotEmptyTheTaskDescription(each[0])==false || isValidPriority(each[1])==false {
-			errorLineNumbers = append(errorLineNumbers,count)
+type Validator interface  {
+	hasError(eachRow []string) bool
+	GenerateErrorMessage(lineNo int,eachRow []string)string
+}
+
+
+type ValidNoOfColumn struct  {
+}
+
+func (c ValidNoOfColumn)hasError(eachRow []string) bool {
+	return len(eachRow)!=2
+}
+
+func (c ValidNoOfColumn)GenerateErrorMessage(lineNo int,eachRow []string)string  {
+	return "Line No "+strconv.Itoa(lineNo)+": expected 2 columns, but got "+strconv.Itoa(len(eachRow))+" columns\n"
+}
+
+
+
+type TaskDescriptionChecker struct  {
+}
+
+func (c TaskDescriptionChecker)hasError(eachRow []string)bool  {
+	return eachRow[0] == ""
+}
+
+func (c TaskDescriptionChecker)GenerateErrorMessage(lineNo int,eachRow []string)string  {
+	return "Line No "+strconv.Itoa(lineNo)+",Column No 1:"+" Task DescripTion Can't be empty\n"
+}
+
+
+
+type PriorityChecker struct  {
+}
+
+func (c PriorityChecker)hasError(eachRow []string) bool {
+	return eachRow[1] != "High" && eachRow[1] != "Medium" && eachRow[1] != "Low"
+}
+
+func (c PriorityChecker)GenerateErrorMessage(lineNo int,eachRow []string)string  {
+	return "Line No "+strconv.Itoa(lineNo)+",Column No 2:"+" expected priority is High or Medium or Low, but got "+eachRow[1]+"\n"
+}
+
+
+func ValidateAllEntry(allEntry [][]string, allValidators []Validator) error {
+	errMsg := ""
+	count := 1
+	for _,eachEntry := range allEntry {
+		for _,eachValidator :=range allValidators{
+			if eachValidator.hasError(eachEntry){
+				errMsg +=eachValidator.GenerateErrorMessage(count,eachEntry)
+			}
 		}
 		count++
 	}
-	if len(errorLineNumbers)>=1{
-		return errors.New("Errors in the following lines"+linesInString(errorLineNumbers))
+	if errMsg!="" {
+		return errors.New("errors in the following line : \n"+errMsg)
 	}
 	return nil
 }
-
-func linesInString(linesNumber []int) string  {
-	lines := " "+strconv.Itoa(linesNumber[0])
-	for  i := 1;i< len(linesNumber);i++{
-		lines = lines +"," +strconv.Itoa(linesNumber[i])
-	}
-	return lines
-}
-
-func isNotEmptyTheTaskDescription(task string) bool {
-	return task != ""
-}
-
-func isValidNoOfColumn(eachEntry []string) bool {
-	return len(eachEntry)==2
-}
-func isValidPriority(priority string) bool{
-	return priority=="High" || priority == "Medium" || priority == "Low"
-}
-

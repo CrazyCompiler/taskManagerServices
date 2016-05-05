@@ -20,7 +20,11 @@ func ReadTaskCsv(fileData string) ([]TableContent,error) {
 	reader.FieldsPerRecord = -1
 	rawCSVdata, err := reader.ReadAll()
 
-	err = validate.ValidateAllEntry(rawCSVdata)
+	allValidators := []validate.Validator{validate.ValidNoOfColumn{},
+		validate.TaskDescriptionChecker{},
+		validate.PriorityChecker{}}
+
+	err = validate.ValidateAllEntry(rawCSVdata,allValidators)
 	if err != nil {
 		return dataArray,err
 	}
