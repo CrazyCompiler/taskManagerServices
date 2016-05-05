@@ -834,3 +834,11 @@ created by net/http.(*Server).Serve
 2016/04/29 15:07:26 Errors in the following lines 1,2,3,4,5,6,7,8,9,10,11,12,13,14
 2016/04/29 15:07:26 http: multiple response.WriteHeader calls
 2016/05/02 12:13:59 short write
+2016/05/05 12:26:16 pq: column "user_id" does not exist
+2016/05/05 12:26:54 pq: column "user_id" does not exist
+2016/05/05 12:33:23 pq: value "9223372036854775807" is out of range for type integer
+2016/05/05 12:40:09 pq: syntax error at or near "where"
+2016/05/05 12:42:44 pq: syntax error at or near "where"
+2016/05/05 12:51:13 pq: syntax error at or near "where"
+2016/05/05 13:28:47 pq: syntax error at or near "where"
+2016/05/05 14:59:56 pq: syntax error at or near "WHERE"

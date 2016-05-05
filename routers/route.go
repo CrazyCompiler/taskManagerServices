@@ -10,11 +10,11 @@ import (
 
 func HandleRequests(context config.Context) {
 	r := mux.NewRouter()
-	r.HandleFunc("/tasks/download/csv",handlers.DownloadCsv(context)).Methods("GET")
-	r.HandleFunc("/tasks/{id:[0-9]+}",handlers.UpdateTask(context)).Methods("PATCH")
-	r.HandleFunc("/tasks/csv",handlers.UploadCsv(context)).Methods("POST")
-	r.HandleFunc("/task/{id:[0-9]+}", handlers.DeleteTask(context)).Methods("DELETE")
-	r.HandleFunc("/tasks", handlers.GetTasks(context)).Methods("GET")
-	r.HandleFunc("/tasks", handlers.AddTask(context)).Methods("POST")
+	r.HandleFunc("/tasks/csv/{id:[0-9]+}",handlers.DownloadCsv(context)).Methods("GET")
+	r.HandleFunc("/{id:[0-9]+}/tasks/{id:[0-9]+}",handlers.UpdateTask(context)).Methods("PATCH")
+	r.HandleFunc("/tasks/csv/{id:[0-9]+}",handlers.UploadCsv(context)).Methods("POST")
+	r.HandleFunc("/{id:[0-9]+}/tasks/{id:[0-9]+}", handlers.DeleteTask(context)).Methods("DELETE")
+	r.HandleFunc("/tasks/{id:[0-9]+}", handlers.GetTasks(context)).Methods("GET")
+	r.HandleFunc("/tasks/{id:[0-9]+}", handlers.AddTask(context)).Methods("POST")
 	http.Handle("/", r)
 }

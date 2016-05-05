@@ -9,13 +9,13 @@ import (
 )
 
 const (
-	dbSelectQuery string = "select taskId,task,priority from tasks;"
+	dbSelectQuery string = "select taskId,task,priority from tasks where user_id=$1;"
 
 )
 
 
-func Get(context config.Context) ([]byte,error) {
-	rows, err := context.Db.Query(dbSelectQuery)
+func Get(context config.Context,userId string) ([]byte,error) {
+	rows, err := context.Db.Query(dbSelectQuery,userId)
 	if err != nil {
 		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}
@@ -27,7 +27,7 @@ func Get(context config.Context) ([]byte,error) {
 	return data,err
 }
 
-func AddTaskByCsv(context config.Context,data string) error{
+func AddTaskByCsv(context config.Context,data string,userId string) error{
 	separatedData,err := fileReaders.ReadTaskCsv(data)
 	if err != nil {
 		errorHandler.ErrorHandler(context.ErrorLogFile,err)
@@ -38,7 +38,7 @@ func AddTaskByCsv(context config.Context,data string) error{
 		newTask := Task{}
 		newTask.TaskDescription = each.TASK
 		newTask.Priority=each.PRIORITY
-		err := newTask.Create(context)
+		err := newTask.Create(context,userId)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 			return err
@@ -47,8 +47,8 @@ func AddTaskByCsv(context config.Context,data string) error{
 	return  nil
 }
 
-func GetCsv(context config.Context) ([][]string,error) {
-	rows, err := context.Db.Query(dbSelectQuery)
+func GetCsv(context config.Context,userId string) ([][]string,error) {
+	rows, err := context.Db.Query(dbSelectQuery,userId)
 	if err != nil {
 		errorHandler.ErrorHandler(context.ErrorLogFile,err)
 	}

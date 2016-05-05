@@ -8,7 +8,6 @@ import (
 	"net/http"
 	"taskManagerServices/errorHandler"
 	"github.com/golang/protobuf/proto"
-
 	"github.com/CrazyCompiler/taskManagerContract"
 	"encoding/csv"
 	"taskManagerServices/models"
@@ -26,6 +25,9 @@ func responseGenerator(status int,errorBody string) (contract.Response){
 
 func AddTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
+		req.ParseForm()
+		userId := strings.Split(req.RequestURI,"/")[2]
+
 		requestData, err := ioutil.ReadAll(req.Body)
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
@@ -38,7 +40,7 @@ func AddTask(context config.Context) http.HandlerFunc {
 		newTask := models.Task{}
 		newTask.TaskDescription = *data.Task
 		newTask.Priority = *data.Priority
-		err = newTask.Create(context)
+		err = newTask.Create(context,userId)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -55,7 +57,8 @@ func AddTask(context config.Context) http.HandlerFunc {
 
 func GetTasks(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		data,err := models.Get(context)
+		userId := strings.Split(req.RequestURI,"/")[2]
+		data,err := models.Get(context,userId)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -80,11 +83,14 @@ func GetTasks(context config.Context) http.HandlerFunc {
 func DeleteTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter,req *http.Request) {
 		req.ParseForm()
-		taskId := strings.Split(req.RequestURI,"/")[2]
+		taskId := strings.Split(req.RequestURI,"/")[3]
 		id,err := strconv.Atoi(taskId)
+		userIdProvided := strings.Split(req.RequestURI,"/")[1]
+
 		taskToDelete := models.Task{}
 		taskToDelete.TaskId = id
-		err = taskToDelete.Delete(context)
+
+		err = taskToDelete.Delete(context,userIdProvided)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -110,7 +116,7 @@ func UpdateTask(context config.Context)http.HandlerFunc{
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		taskId := strings.Split(req.RequestURI,"/")[2]
+		taskId := strings.Split(req.RequestURI,"/")[3]
 		id,err := strconv.Atoi(taskId)
 
 		if err != nil {
@@ -120,7 +126,10 @@ func UpdateTask(context config.Context)http.HandlerFunc{
 		taskToUpdate.TaskId = id
 		taskToUpdate.TaskDescription = *data.Task
 		taskToUpdate.Priority = *data.Priority
-		err = taskToUpdate.Update(context)
+
+		userIdProvided := strings.Split(req.RequestURI,"/")[1]
+
+		err = taskToUpdate.Update(context,userIdProvided)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -146,7 +155,10 @@ func UploadCsv(context config.Context) http.HandlerFunc{
 		if err != nil {
 			errorHandler.ErrorHandler(context.ErrorLogFile,err)
 		}
-		err = models.AddTaskByCsv(context,string(data.Data))
+
+		userIdProvided := strings.Split(req.RequestURI,"/")[3]
+
+		err = models.AddTaskByCsv(context,string(data.Data),userIdProvided)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)
@@ -171,7 +183,8 @@ func (w *Wr) Write(b []byte) (int, error) {
 
 func DownloadCsv(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter, req *http.Request) {
-		dbData,err := models.GetCsv(context)
+		userIdProvided := strings.Split(req.RequestURI,"/")[3]
+		dbData,err := models.GetCsv(context,userIdProvided)
 		wrt := &Wr{}
 		w := csv.NewWriter(wrt)
 		w.WriteAll(dbData)
