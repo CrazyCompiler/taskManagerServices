@@ -84,6 +84,7 @@ func GetTasks(context config.Context) http.HandlerFunc {
 func DeleteTask(context config.Context) http.HandlerFunc {
 	return func(res http.ResponseWriter,req *http.Request) {
 		req.ParseForm()
+
 		taskId := strings.Split(req.RequestURI,"/")[3]
 		id,err := strconv.Atoi(taskId)
 		userIdProvided := strings.Split(req.RequestURI,"/")[1]
