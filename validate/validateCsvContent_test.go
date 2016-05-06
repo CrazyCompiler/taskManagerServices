@@ -1,27 +1,25 @@
 package validate
 
-import "testing"
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
 
-func TestValidateAllEntry(t *testing.T) {
-	sampleEntries := [][]string{{"drinking","High"},
-		{"coding","Medium"},
-		{""}}
-	err := ValidateAllEntry(sampleEntries)
-
-	if err != nil {
-		t.Errorf("expected err will be nil but error is %s",err.Error())
+func TestValidateAllEntryForGivenWrongEntry(t *testing.T) {
+	wrongEntry := [][]string{{"drinking water", "High"},
+		{"coding", "Medium", "Accha"},
+		{"Understanding", "Samjhe"},
+		{"", "High"},
 	}
+	allValidator := []Validator{NoOfColumnValidator{}, TaskDescriptionValidator{}, PriorityValidator{}}
+	err := ValidateAllEntry(wrongEntry,allValidator)
+	expectedErrorMessage := "errors in the following line :\nLine No 2: expected 2 columns, but got 3 columns\nLine No 3,Column No 2: expected priority is High or Medium or Low, but got Samjhe\nLine No 4,Column No 1: Task DescripTion Can't be empty\n"
+	assert.Equal(t,expectedErrorMessage,err.Error(),"There will be error")
+}
 
-	sampleEntries = [][]string{{"drinking","High"},
-		{"","Medium"},
-		{"sleeping","Hello"},
-		{"coocking","Low"},
-		{""}}
-
-	err = ValidateAllEntry(sampleEntries)
-
-	if err.Error() != "Errors in the following lines 2,3"{
-		t.Errorf("err suppose to be Errors in the following lines 2,3 but it is %s",err.Error())
-	}
-
+func TestValidateAllEntryForGivenRightEntry(t *testing.T) {
+	rightEntry := [][]string{{"drinking water", "High"},{"coding", "Medium"},{"passing test","Low"}}
+	allValidator := []Validator{NoOfColumnValidator{}, TaskDescriptionValidator{}, PriorityValidator{}}
+	err := ValidateAllEntry(rightEntry,allValidator)
+	assert.Equal(t,nil,err,"There will be no error")
 }
