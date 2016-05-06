@@ -5,9 +5,9 @@ import (
 	"strconv"
 )
 
-type Validator interface  {
+type Validator interface {
 	hasError(eachRow []string) bool
-	GenerateErrorMessage(lineNo int,eachRow []string)string
+	GenerateErrorMessage(lineNo int, eachRow []string) string
 }
 
 
@@ -48,13 +48,13 @@ func (c PriorityValidator) GenerateErrorMessage(lineNo int,eachRow []string)stri
 }
 
 
-func ValidateAllEntry (allEntry [][]string, allValidators []Validator) error {
+func ValidateAllEntry(allEntry [][]string, allValidators []Validator) error {
 	errMsg := ""
 	count := 1
-	for _,eachEntry := range allEntry {
-		for _,eachValidator :=range allValidators{
-			if eachValidator.hasError(eachEntry){
-				errMsg +=eachValidator.GenerateErrorMessage(count,eachEntry)
+	for _, eachEntry := range allEntry {
+		for _, eachValidator := range allValidators {
+			if eachValidator.hasError(eachEntry) {
+				errMsg += eachValidator.GenerateErrorMessage(count, eachEntry)
 			}
 		}
 		count++
