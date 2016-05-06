@@ -892,3 +892,16 @@ Line No 3,Column No 2: expected priority is High or Medium or Low, but got Medm
 Line No 5,Column No 1: Task DescripTion Can't be empty
 
 >>>>>>> 28b9aa3acfd53676809634b3f6d210ebcf848eb2
+2016/05/05 23:06:37 errors in the following line : 
+Line No 1: expected 2 columns, but got 3 columns
+Line No 3,Column No 2: expected priority is High or Medium or Low, but got Medm
+Line No 5,Column No 1: Task DescripTion Can't be empty
+
+2016/05/06 11:13:31 errors in the following line : 
+Line No 5,Column No 2: expected priority is High or Medium or Low, but got Mediumasda
+
+2016/05/06 11:26:41 errors in the following line : 
+Line No 1: expected 2 columns, but got 3 columns
+Line No 3,Column No 2: expected priority is High or Medium or Low, but got Medm
+Line No 5,Column No 1: Task DescripTion Can't be empty
+
