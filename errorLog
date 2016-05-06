@@ -905,3 +905,16 @@ Line No 1: expected 2 columns, but got 3 columns
 Line No 3,Column No 2: expected priority is High or Medium or Low, but got Medm
 Line No 5,Column No 1: Task DescripTion Can't be empty
 
+2016/05/06 16:33:59 exec query 'insert into tasks(task,priority,user_id) VALUES($1,$2,$3);', arguments do not match: argument 2 expected [string - 567] does not match actual [string - 123432]
+2016/05/06 16:33:59 exec query 'delete from tasks where taskId=$1 and user_id = $2', does not match regex 'insert into tasks'
+2016/05/06 16:33:59 exec query 'update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;', does not match regex 'insert into tasks'
+2016/05/06 16:34:06 exec query 'insert into tasks(task,priority,user_id) VALUES($1,$2,$3);', arguments do not match: argument 2 expected [string - 567] does not match actual [string - 123432]
+2016/05/06 16:34:06 exec query 'delete from tasks where taskId=$1 and user_id = $2', does not match regex 'insert into tasks'
+2016/05/06 16:34:06 exec query 'update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;', does not match regex 'insert into tasks'
+2016/05/06 16:34:30 exec query 'insert into tasks(task,priority,user_id) VALUES($1,$2,$3);', arguments do not match: argument 2 expected [string - 567] does not match actual [string - 123432]
+2016/05/06 16:34:30 exec query 'delete from tasks where taskId=$1 and user_id = $2', does not match regex 'insert into tasks'
+2016/05/06 16:34:30 exec query 'update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;', does not match regex 'insert into tasks'
+2016/05/06 16:36:12 exec query 'insert into tasks(task,priority,user_id) VALUES($1,$2,$3);', arguments do not match: argument 2 expected [string - 567] does not match actual [string - 123432]
+2016/05/06 16:36:12 exec query 'delete from tasks where taskId=$1 and user_id = $2', does not match regex 'insert into tasks'
+2016/05/06 16:36:12 exec query 'update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;', does not match regex 'insert into tasks'
+2016/05/06 17:24:37 open hello: no such file or directory

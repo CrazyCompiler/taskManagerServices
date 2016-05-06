@@ -24,18 +24,18 @@ func (r CsvFileReader) Read() ([]TableContent,error) {
 	reader := csv.NewReader(strings.NewReader(r.FileData))
 
 	reader.FieldsPerRecord = -1
-	rawCsvdata, err := reader.ReadAll()
+	rawCsvData, err := reader.ReadAll()
 
 	allValidators := []validate.Validator{validate.NoOfColumnValidator{},
 		validate.TaskDescriptionValidator{},
 		validate.PriorityValidator{}}
 
-	err = validate.ValidateAllEntry(rawCsvdata,allValidators)
+	err = validate.ValidateAllEntry(rawCsvData,allValidators)
 	if err != nil {
 		return dataArray,err
 	}
 
-	for _, each := range rawCsvdata {
+	for _, each := range rawCsvData {
 		entry := TableContent{}
 		if(len(each) == 2) {
 			entry.TASK = each[0]
