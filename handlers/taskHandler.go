@@ -11,6 +11,7 @@ import (
 	"github.com/CrazyCompiler/taskManagerContract"
 	"encoding/csv"
 	"taskManagerServices/models"
+	"taskManagerServices/fileReaders"
 )
 
 func responseGenerator(status int,errorBody string) (contract.Response){
@@ -157,8 +158,10 @@ func UploadCsv(context config.Context) http.HandlerFunc{
 		}
 
 		userIdProvided := strings.Split(req.RequestURI,"/")[3]
-
-		err = models.AddTaskByCsv(context,string(data.Data),userIdProvided)
+		csvReader := fileReaders.CsvFileReader{
+			FileData:string(data.Data),
+		}
+		err = models.AddTaskByCsv(context,userIdProvided,csvReader)
 		if err != nil {
 			resp := responseGenerator(http.StatusInternalServerError,err.Error())
 			dataToBeSend,err :=  proto.Marshal(&resp)

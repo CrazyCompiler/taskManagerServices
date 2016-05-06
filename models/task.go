@@ -11,6 +11,7 @@ const (
 	dbUpdateQuery string = "update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;"
 )
 
+
 type Task struct {
 	TaskId int
 	TaskDescription,Priority string

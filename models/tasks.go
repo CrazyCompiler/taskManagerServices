@@ -10,48 +10,47 @@ import (
 
 const (
 	dbSelectQuery string = "select taskId,task,priority from tasks where user_id=$1;"
-
 )
 
-
-func Get(context config.Context,userId string) ([]byte,error) {
-	rows, err := context.Db.Query(dbSelectQuery,userId)
+func Get(context config.Context, userId string) ([]byte, error) {
+	rows, err := context.Db.Query(dbSelectQuery, userId)
 	if err != nil {
-		errorHandler.ErrorHandler(context.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile, err)
 	}
 	dbData := converters.ToStructObjects(rows)
 	data, err := json.Marshal(dbData)
 	if err != nil {
-		errorHandler.ErrorHandler(context.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile, err)
 	}
-	return data,err
+	return data, err
 }
 
-func AddTaskByCsv(context config.Context,data string,userId string) error{
-	separatedData,err := fileReaders.ReadTaskCsv(data)
+func AddTaskByCsv(context config.Context, userId string, reader fileReaders.Reader) error {
+	separatedData, err := reader.Read()
 	if err != nil {
-		errorHandler.ErrorHandler(context.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile, err)
 		return err
 	}
 
 	for _, each := range separatedData {
-		newTask := Task{}
-		newTask.TaskDescription = each.TASK
-		newTask.Priority=each.PRIORITY
-		err := newTask.Create(context,userId)
+		newTask := Task{
+			TaskDescription:each.TASK,
+			Priority:each.PRIORITY,
+		}
+		err := newTask.Create(context, userId)
 		if err != nil {
-			errorHandler.ErrorHandler(context.ErrorLogFile,err)
+			errorHandler.ErrorHandler(context.ErrorLogFile, err)
 			return err
 		}
 	}
-	return  nil
+	return nil
 }
 
-func GetCsv(context config.Context,userId string) ([][]string,error) {
-	rows, err := context.Db.Query(dbSelectQuery,userId)
+func GetCsv(context config.Context, userId string) ([][]string, error) {
+	rows, err := context.Db.Query(dbSelectQuery, userId)
 	if err != nil {
-		errorHandler.ErrorHandler(context.ErrorLogFile,err)
+		errorHandler.ErrorHandler(context.ErrorLogFile, err)
 	}
 	dbData := converters.ToArrayOfString(rows)
-	return 	dbData,err
+	return dbData, err
 }

@@ -11,25 +11,31 @@ type TableContent struct {
 	PRIORITY string
 }
 
+type Reader interface {
+	Read() ([]TableContent,error)
+}
 
+type CsvFileReader struct {
+	FileData string
+}
 
-func ReadTaskCsv(fileData string) ([]TableContent,error) {
+func (r CsvFileReader) Read() ([]TableContent,error) {
 	dataArray := []TableContent{}
-	reader := csv.NewReader(strings.NewReader(fileData))
+	reader := csv.NewReader(strings.NewReader(r.FileData))
 
 	reader.FieldsPerRecord = -1
-	rawCSVdata, err := reader.ReadAll()
+	rawCsvdata, err := reader.ReadAll()
 
 	allValidators := []validate.Validator{validate.NoOfColumnValidator{},
 		validate.TaskDescriptionValidator{},
 		validate.PriorityValidator{}}
 
-	err = validate.ValidateAllEntry(rawCSVdata,allValidators)
+	err = validate.ValidateAllEntry(rawCsvdata,allValidators)
 	if err != nil {
 		return dataArray,err
 	}
 
-	for _, each := range rawCSVdata {
+	for _, each := range rawCsvdata {
 		entry := TableContent{}
 		if(len(each) == 2) {
 			entry.TASK = each[0]

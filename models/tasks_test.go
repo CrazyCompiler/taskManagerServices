@@ -1,8 +1,6 @@
 package models
 
 import (
-)
-import (
 	"testing"
 	"github.com/stretchr/testify/assert"
 	"os"
