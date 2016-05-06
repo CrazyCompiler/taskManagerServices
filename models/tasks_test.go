@@ -1,11 +1,13 @@
 package models
 
 import (
+)
+import (
 	"testing"
-	sqlmock "github.com/DATA-DOG/go-sqlmock"
 	"github.com/stretchr/testify/assert"
-	"taskManagerServices/config"
 	"os"
+	"github.com/DATA-DOG/go-sqlmock"
+	"taskManagerServices/config"
 )
 
 const errorLogFilePath string = "../errorLog"
@@ -13,80 +15,18 @@ const errorLogFilePath string = "../errorLog"
 func TestGet(t *testing.T) {
 	db,mock, err := sqlmock.New()
 	assert.Nil(t,err)
+
+	user_id := "1234"
 	rows := sqlmock.NewRows([]string{"hello","High"})
-	mock.ExpectQuery("select taskId,task,priority from tasks;").WillReturnRows(rows)
+	mock.ExpectQuery("select taskId,task,priority from tasks").
+	WithArgs(user_id).
+	WillReturnRows(rows)
 
 	contextObject := config.Context{}
 	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
 	contextObject.Db = db
 
-	Get(contextObject)
-
-	if err := mock.ExpectationsWereMet(); err != nil {
-		t.Errorf("there were unfulfilled expections: %s", err)
-	}
-}
-
-func TestAdd(t *testing.T) {
-	db,mock, err := sqlmock.New()
-	assert.Nil(t,err)
-
-	task := "dring water"
-	priority := "High"
-
-	mock.ExpectExec("insert into tasks").
-	WithArgs(task,priority).
-	WillReturnResult(sqlmock.NewResult(1, 1))
-
-	contextObject := config.Context{}
-	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
-	contextObject.Db = db
-
-	Add(contextObject,task,priority)
-
-	if err := mock.ExpectationsWereMet(); err != nil {
-		t.Errorf("there were unfulfilled expections: %s", err)
-	}
-}
-
-func TestDelete(t *testing.T) {
-	db,mock, err := sqlmock.New()
-	assert.Nil(t,err)
-
-	taskId := 1
-
-	mock.ExpectExec("delete from tasks").
-	WithArgs(taskId).
-	WillReturnResult(sqlmock.NewResult(1, 1))
-
-	contextObject := config.Context{}
-	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
-	contextObject.Db = db
-
-	Delete(contextObject,taskId)
-
-	if err := mock.ExpectationsWereMet(); err != nil {
-		t.Errorf("there were unfulfilled expections: %s", err)
-	}
-}
-
-func TestUpdate(t *testing.T) {
-	db,mock, err := sqlmock.New()
-	assert.Nil(t,err)
-
-	taskId := 1
-	priority := "High"
-	taskDescription := "Having food"
-
-	mock.ExpectExec("update tasks set ").
-	WithArgs(taskDescription,priority,int32(taskId)).
-	WillReturnResult(sqlmock.NewResult(0, 1))
-
-	contextObject := config.Context{}
-	contextObject.ErrorLogFile, err = os.OpenFile(errorLogFilePath, os.O_APPEND|os.O_WRONLY, 0600)
-	contextObject.Db = db
-
-	Update(contextObject,int32(taskId),taskDescription,priority)
+	Get(contextObject,user_id)
 
 	if err := mock.ExpectationsWereMet(); err != nil {
 		t.Errorf("there were unfulfilled expections: %s", err)
