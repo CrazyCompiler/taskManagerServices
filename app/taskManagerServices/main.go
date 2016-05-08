@@ -28,10 +28,13 @@ func main() {
 	if len(os.Args) > 1 {
 		dbConfigFilePath = os.Args[1]
 	}
-	dbConfigDataJson := fileReaders.ReadJsonFile(dbConfigFilePath)
-	dbinfo := database.CreateDbInfo(dbConfigDataJson)
+	dbConfigDataJson,err := fileReaders.ReadJsonFile(dbConfigFilePath,context)
+	if err != nil {
+		os.Exit(1)
+	}
+	dbInfo := database.CreateDbInfo(dbConfigDataJson)
 
-	context.Db, err = sql.Open("postgres", dbinfo)
+	context.Db, err = sql.Open("postgres", dbInfo)
 
 	if err != nil {
 		errorHandler.ErrorHandler(context.ErrorLogFile,err)

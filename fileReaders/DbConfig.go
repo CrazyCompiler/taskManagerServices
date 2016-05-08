@@ -2,9 +2,9 @@ package fileReaders
 
 import (
 	"io/ioutil"
-	"fmt"
-	"os"
 	"encoding/json"
+	"taskManagerServices/config"
+	"taskManagerServices/errorHandler"
 )
 
 type JsonObject struct {
@@ -18,13 +18,13 @@ func (db *JsonObject) IsInOrder() bool{
 	return db.DB_NAME != "" && db.DB_USER != "" && db.DB_SCHEMA != "" && db.DB_PASSWORD != ""
 }
 
-func ReadJsonFile(fileName string)(JsonObject){
-	file, e := ioutil.ReadFile(fileName)
-	if e != nil {
-		fmt.Printf("File error: %v\n", e)
-		os.Exit(1)
+func ReadJsonFile(fileName string,contextObject config.Context)(JsonObject,error){
+	file, err := ioutil.ReadFile(fileName)
+	if err != nil {
+		errorHandler.ErrorHandler(contextObject.ErrorLogFile,err)
+		return JsonObject{}, err
 	}
 	var jsonType JsonObject
 	json.Unmarshal(file, &jsonType)
-	return jsonType
+	return jsonType,nil
 }

@@ -2,7 +2,7 @@ package database
 
 import (
 	"testing"
-	"taskManager/fileReaders"
+	"taskManagerServices/fileReaders"
 	"github.com/stretchr/testify/assert"
 )
 

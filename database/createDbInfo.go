@@ -8,8 +8,8 @@ import (
 const (
 	DB_USER     = "postgres"
 	DB_PASSWORD = "postgres"
-	DB_NAME     = "postgres"
-	DB_SCHEMA   = "todoMaker"
+	DB_NAME     = "taskmanager"
+	DB_SCHEMA   = "taskTable"
 )
 
 func CreateDbInfo(dbConfig fileReaders.JsonObject) string {
