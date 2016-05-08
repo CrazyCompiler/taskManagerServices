@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c4006b5-ab8a-4faa-8c98-ba7699e1cf9e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fileReaders/DbConfig_test.go" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fileReaders/dbConfigForTests" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/fileReaders/taskCsvReader_test.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/taskManagerServices/main.go" afterPath="$PROJECT_DIR$/app/taskManagerServices/main.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/converters/convertTasksRowToStruct_test.go" afterPath="$PROJECT_DIR$/converters/convertTasksRowToStruct_test.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/createDbInfo_test.go" afterPath="$PROJECT_DIR$/database/createDbInfo_test.go" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/errorHandler/errorLogForTest" afterPath="$PROJECT_DIR$/errorHandler/errorLogForTest" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/errorLog" afterPath="$PROJECT_DIR$/errorLog" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileReaders/DbConfig.go" afterPath="$PROJECT_DIR$/fileReaders/DbConfig.go" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fileReaders/taskCsvReader.go" afterPath="$PROJECT_DIR$/fileReaders/taskCsvReader.go" />
     </list>
     <ignored path="taskManagerServices.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,10 +17,13 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/taskManagerServices$All_in__errorHandler_.coverage" NAME="All in 'errorHandler' Coverage Results" MODIFIED="1462538025277" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/taskManagerServices$DbConfig_test_go.coverage" NAME="DbConfig_test.go Coverage Results" MODIFIED="1462537020646" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/taskManagerServices$All_in__handlers_.coverage" NAME="All in 'handlers' Coverage Results" MODIFIED="1462538054319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/taskManagerServices$All_in__database_.coverage" NAME="All in 'database' Coverage Results" MODIFIED="1462534349403" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/taskManagerServices$All_in__fileReaders_.coverage" NAME="All in 'fileReaders' Coverage Results" MODIFIED="1462537955478" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/taskManagerServices$errorHandler_test_go.coverage" NAME="errorHandler_test.go Coverage Results" MODIFIED="1462534404689" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/taskManagerServices$All_in__models_.coverage" NAME="All in 'models' Coverage Results" MODIFIED="1462538084865" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/taskManagerServices$All_in__taskManagerServices_.coverage" NAME="All in 'taskManagerServices' Coverage Results" MODIFIED="1462534362050" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="GoCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
   <component name="CreatePatchCommitExecutor">
@@ -40,65 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="tasks.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/tasks.go">
+      <file leaf-file-name="demo.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/fileReaders/demo.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="44" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/taskManagerServices/main.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-              <folding>
-                <marker date="1462536891000" expanded="true" signature="688:705" placeholder="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taskCsvReader.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fileReaders/taskCsvReader.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="28" selection-start-line="45" selection-start-column="25" selection-end-line="45" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="taskCsvReader_test.go" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/fileReaders/taskCsvReader_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.075785585">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DbConfig_test.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig_test.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-              <folding>
-                <element signature="e#21#116#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="errors.go" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../github.com/stretchr/testify/assert/errors.go">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.09756097">
+              <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -138,7 +79,6 @@
         <option value="$PROJECT_DIR$/models/tasks.go" />
         <option value="$PROJECT_DIR$/models/task.go" />
         <option value="$PROJECT_DIR$/validate/validateCsvContent.go" />
-        <option value="$PROJECT_DIR$/fileReaders/demo.csv" />
         <option value="$PROJECT_DIR$/routers/route.go" />
         <option value="$PROJECT_DIR$/handlers/taskHandler.go" />
         <option value="$PROJECT_DIR$/converters/convertTasksRow.go" />
@@ -150,6 +90,7 @@
         <option value="$PROJECT_DIR$/fileReaders/DbConfig_test.go" />
         <option value="$PROJECT_DIR$/fileReaders/taskCsvReader.go" />
         <option value="$PROJECT_DIR$/fileReaders/taskCsvReader_test.go" />
+        <option value="$PROJECT_DIR$/fileReaders/demo.csv" />
       </list>
     </option>
   </component>
@@ -229,20 +170,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taskManagerServices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="taskManagerServices" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="converters" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -264,39 +191,13 @@
     <property name="configurable.Module.libraries.is.expanded" value="false" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
   </component>
-  <component name="RunManager" selected="Go Test.All in 'fileReaders'">
-    <configuration default="false" name="TestReadJsonFileGivesErrorForWrontFile in DbConfig_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
-      <module name="taskManagerServices" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="taskManagerServices/fileReaders" />
-      <pattern value="^TestReadJsonFileGivesErrorForWrontFile$" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="Go Test.All in 'models'">
     <configuration default="false" name="All in 'fileReaders'" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="taskManagerServices" />
       <working_directory value="$PROJECT_DIR$/fileReaders" />
       <framework value="gotest" />
       <kind value="DIRECTORY" />
       <directory value="$PROJECT_DIR$/fileReaders" />
-      <method />
-    </configuration>
-    <configuration default="false" name="DbConfig_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
-      <module name="taskManagerServices" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <framework value="gotest" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/fileReaders/DbConfig_test.go" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestCsvFileReader_Read in taskCsvReader_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
-      <module name="taskManagerServices" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <framework value="gotest" />
-      <kind value="PACKAGE" />
-      <package value="taskManagerServices/fileReaders" />
-      <pattern value="^TestCsvFileReader_Read$" />
       <method />
     </configuration>
     <configuration default="false" name="TestCsvFileReaderForError in taskCsvReader_test.go" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
@@ -306,6 +207,30 @@
       <kind value="PACKAGE" />
       <package value="taskManagerServices/fileReaders" />
       <pattern value="^TestCsvFileReaderForError$" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in 'errorHandler'" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="taskManagerServices" />
+      <working_directory value="$PROJECT_DIR$/errorHandler" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/errorHandler" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in 'handlers'" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="taskManagerServices" />
+      <working_directory value="$PROJECT_DIR$/handlers" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/handlers" />
+      <method />
+    </configuration>
+    <configuration default="false" name="All in 'models'" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
+      <module name="taskManagerServices" />
+      <working_directory value="$PROJECT_DIR$/models" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/models" />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -585,19 +510,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Go Test.TestReadJsonFileGivesErrorForWrontFile in DbConfig_test.go" />
-      <item index="1" class="java.lang.String" itemvalue="Go Test.All in 'fileReaders'" />
-      <item index="2" class="java.lang.String" itemvalue="Go Test.DbConfig_test.go" />
-      <item index="3" class="java.lang.String" itemvalue="Go Test.TestCsvFileReader_Read in taskCsvReader_test.go" />
-      <item index="4" class="java.lang.String" itemvalue="Go Test.TestCsvFileReaderForError in taskCsvReader_test.go" />
+      <item index="0" class="java.lang.String" itemvalue="Go Test.All in 'fileReaders'" />
+      <item index="1" class="java.lang.String" itemvalue="Go Test.TestCsvFileReaderForError in taskCsvReader_test.go" />
+      <item index="2" class="java.lang.String" itemvalue="Go Test.All in 'errorHandler'" />
+      <item index="3" class="java.lang.String" itemvalue="Go Test.All in 'handlers'" />
+      <item index="4" class="java.lang.String" itemvalue="Go Test.All in 'models'" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Go Test.All in 'fileReaders'" />
-        <item index="1" class="java.lang.String" itemvalue="Go Test.TestCsvFileReaderForError in taskCsvReader_test.go" />
-        <item index="2" class="java.lang.String" itemvalue="Go Test.TestCsvFileReader_Read in taskCsvReader_test.go" />
-        <item index="3" class="java.lang.String" itemvalue="Go Test.DbConfig_test.go" />
-        <item index="4" class="java.lang.String" itemvalue="Go Test.TestReadJsonFileGivesErrorForWrontFile in DbConfig_test.go" />
+        <item index="0" class="java.lang.String" itemvalue="Go Test.All in 'models'" />
+        <item index="1" class="java.lang.String" itemvalue="Go Test.All in 'handlers'" />
+        <item index="2" class="java.lang.String" itemvalue="Go Test.All in 'errorHandler'" />
+        <item index="3" class="java.lang.String" itemvalue="Go Test.All in 'fileReaders'" />
+        <item index="4" class="java.lang.String" itemvalue="Go Test.TestCsvFileReaderForError in taskCsvReader_test.go" />
       </list>
     </recent_temporary>
   </component>
@@ -615,8 +540,17 @@
     <servers />
   </component>
   <component name="TestHistory">
+    <history-entry file="All_in__errorHandler_ - 2016.05.06 at 18h 03m 46s.xml">
+      <configuration name="All in 'errorHandler'" configurationId="GoTestRunConfiguration" />
+    </history-entry>
     <history-entry file="All_in__fileReaders_ - 2016.05.06 at 18h 02m 37s.xml">
       <configuration name="All in 'fileReaders'" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in__handlers_ - 2016.05.06 at 18h 04m 16s.xml">
+      <configuration name="All in 'handlers'" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="All_in__models_ - 2016.05.06 at 18h 04m 46s.xml">
+      <configuration name="All in 'models'" configurationId="GoTestRunConfiguration" />
     </history-entry>
     <history-entry file="TestCsvFileReaderForError_in_taskCsvReader_test_go - 2016.05.06 at 18h 00m 13s.xml">
       <configuration name="TestCsvFileReaderForError in taskCsvReader_test.go" configurationId="GoTestRunConfiguration" />
@@ -636,15 +570,6 @@
     <history-entry file="TestCsvFileReaderForError_in_taskCsvReader_test_go - 2016.05.06 at 18h 02m 26s.xml">
       <configuration name="TestCsvFileReaderForError in taskCsvReader_test.go" configurationId="GoTestRunConfiguration" />
     </history-entry>
-    <history-entry file="TestCsvFileReader_Read_in_taskCsvReader_test_go - 2016.05.06 at 17h 59m 46s.xml">
-      <configuration name="TestCsvFileReader_Read in taskCsvReader_test.go" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestCsvFileReader_Read_in_taskCsvReader_test_go - 2016.05.06 at 17h 59m 59s.xml">
-      <configuration name="TestCsvFileReader_Read in taskCsvReader_test.go" configurationId="GoTestRunConfiguration" />
-    </history-entry>
-    <history-entry file="TestCsvFileReader_Read_in_taskCsvReader_test_go - 2016.05.06 at 18h 00m 06s.xml">
-      <configuration name="TestCsvFileReader_Read in taskCsvReader_test.go" configurationId="GoTestRunConfiguration" />
-    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1680" height="940" extended-state="6" />
@@ -656,7 +581,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32900944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32900944" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3283582" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -880,24 +805,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/handlers/taskHandler_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5365854">
-          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
-          <folding>
-            <element signature="e#18#142#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fileReaders/demo.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09756097">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routers/route.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1054,28 +961,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig_test.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
-          <folding>
-            <element signature="e#21#116#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/tasks.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="34" column="44" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../github.com/stretchr/testify/assert/errors.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -1088,10 +977,42 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/handlers/taskHandler_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36585367">
+          <caret line="22" column="23" selection-start-line="22" selection-start-column="23" selection-end-line="22" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/fileReaders/taskCsvReader_test.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.075785585">
+        <state vertical-scroll-proportion="0.12195122">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80487806">
+          <caret line="46" column="43" selection-start-line="46" selection-start-column="43" selection-end-line="46" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../github.com/stretchr/testify/assert/errors.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.17073171">
+          <caret line="9" column="4" selection-start-line="9" selection-start-column="4" selection-end-line="9" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileReaders/demo.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09756097">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
           <folding />
         </state>
       </provider>

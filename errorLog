@@ -918,3 +918,21 @@ Line No 5,Column No 1: Task DescripTion Can't be empty
 2016/05/06 16:36:12 exec query 'delete from tasks where taskId=$1 and user_id = $2', does not match regex 'insert into tasks'
 2016/05/06 16:36:12 exec query 'update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;', does not match regex 'insert into tasks'
 2016/05/06 17:24:37 open hello: no such file or directory
+2016/05/06 18:04:46 some Error
+2016/05/06 18:04:46 some Error
+2016/05/06 18:04:46 some Error
+2016/05/06 18:05:53 some Error
+2016/05/06 18:05:54 some Error
+2016/05/06 18:05:54 some Error
+2016/05/06 18:06:37 some Error
+2016/05/06 18:06:37 some Error
+2016/05/06 18:06:37 some Error
+2016/05/06 18:08:22 some Error
+2016/05/06 18:08:22 some Error
+2016/05/06 18:08:22 some Error
+2016/05/06 18:58:28 errors in the following line :
+Line No 5,Column No 2: expected priority is High or Medium or Low, but got Hig
+
+2016/05/08 00:12:13 errors in the following line :
+Line No 5,Column No 2: expected priority is High or Medium or Low, but got Hig
+
