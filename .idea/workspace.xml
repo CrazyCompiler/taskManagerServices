@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c4006b5-ab8a-4faa-8c98-ba7699e1cf9e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/errorHandler/errorLogForTest" afterPath="$PROJECT_DIR$/errorHandler/errorLogForTest" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/database/createDbInfo.go" afterPath="$PROJECT_DIR$/database/createDbInfo.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dbConfigFile" afterPath="$PROJECT_DIR$/dbConfigFile" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/errorLog" afterPath="$PROJECT_DIR$/errorLog" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/task.go" afterPath="$PROJECT_DIR$/models/task.go" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/tasks.go" afterPath="$PROJECT_DIR$/models/tasks.go" />
     </list>
     <ignored path="taskManagerServices.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,11 +37,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="demo.csv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="tasks.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/tasks.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="demo.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/fileReaders/demo.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.09756097">
+            <state vertical-scroll-proportion="0.0">
               <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="createDbInfo.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/database/createDbInfo.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/task.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.14634146">
+              <caret line="9" column="73" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="73" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DbConfig.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dbConfigFile" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dbConfigFile">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/taskManagerServices/main.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -68,7 +130,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/todoMaker-svc/main.go" />
-        <option value="$PROJECT_DIR$/database/createDbInfo.go" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/vendor/github.com/contract/contract.proto" />
         <option value="$PROJECT_DIR$/glide.yaml" />
@@ -76,8 +137,6 @@
         <option value="$PROJECT_DIR$/handlers/taskHandler_test.go" />
         <option value="$PROJECT_DIR$/vendor/github.com/taskManagerContract/contract.proto" />
         <option value="$PROJECT_DIR$/vendor/github.com/CrazyCompiler/taskManagerContract/contract.proto" />
-        <option value="$PROJECT_DIR$/models/tasks.go" />
-        <option value="$PROJECT_DIR$/models/task.go" />
         <option value="$PROJECT_DIR$/validate/validateCsvContent.go" />
         <option value="$PROJECT_DIR$/routers/route.go" />
         <option value="$PROJECT_DIR$/handlers/taskHandler.go" />
@@ -91,6 +150,10 @@
         <option value="$PROJECT_DIR$/fileReaders/taskCsvReader.go" />
         <option value="$PROJECT_DIR$/fileReaders/taskCsvReader_test.go" />
         <option value="$PROJECT_DIR$/fileReaders/demo.csv" />
+        <option value="$PROJECT_DIR$/database/createDbInfo.go" />
+        <option value="$PROJECT_DIR$/dbConfigFile" />
+        <option value="$PROJECT_DIR$/models/tasks.go" />
+        <option value="$PROJECT_DIR$/models/task.go" />
       </list>
     </option>
   </component>
@@ -166,7 +229,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="fileReaders" />
+              <option name="myItemId" value="models" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -853,14 +916,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/task.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6097561">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/converters/convertTasksRowToStruct_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09756097">
@@ -909,14 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dbConfigFile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/fileReaders/dbConfigForTests">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.4482758">
@@ -925,46 +972,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/createDbInfo.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29759705">
-          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding>
-            <element signature="e#18#70#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44362292">
-          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/taskManagerServices/main.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
-          <folding>
-            <marker date="1462536891000" expanded="true" signature="688:705" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/converters/convertTasksRow.go">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2939002">
           <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/models/tasks.go">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="44" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="44" />
           <folding />
         </state>
       </provider>
@@ -1011,8 +1022,56 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/fileReaders/demo.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.09756097">
+        <state vertical-scroll-proportion="0.0">
           <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/taskManagerServices/main.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="11" selection-start-line="34" selection-start-column="11" selection-end-line="34" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/createDbInfo.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="32" selection-start-line="11" selection-start-column="32" selection-end-line="11" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dbConfigFile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="18" selection-start-line="3" selection-start-column="18" selection-end-line="3" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fileReaders/DbConfig.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/tasks.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="44" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/task.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14634146">
+          <caret line="9" column="73" selection-start-line="9" selection-start-column="73" selection-end-line="9" selection-end-column="73" />
           <folding />
         </state>
       </provider>

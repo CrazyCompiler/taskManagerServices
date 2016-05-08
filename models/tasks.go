@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	dbSelectQuery string = "select taskId,task,priority from tasks where user_id=$1;"
+	dbSelectQuery string = "select taskid,task,priority from task where userid=$1;"
 )
 
 func Get(context config.Context, userId string) ([]byte, error) {

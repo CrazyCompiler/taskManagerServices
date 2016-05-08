@@ -6,9 +6,9 @@ import (
 )
 
 const (
-	dbInsertQuery string = "insert into tasks(task,priority,user_id)  VALUES($1,$2,$3);"
-	dbDeleteQuery string = "delete from tasks where taskId=$1 and user_id = $2"
-	dbUpdateQuery string = "update tasks set task=$1,priority=$2 where taskID=$3 and user_id = $4;"
+	dbInsertQuery string = "insert into task(task,priority,userid)  VALUES($1,$2,$3);"
+	dbDeleteQuery string = "delete from task where taskid=$1 and userid = $2"
+	dbUpdateQuery string = "update task set task=$1,priority=$2 where taskiD=$3 and userid = $4;"
 )
 
 
