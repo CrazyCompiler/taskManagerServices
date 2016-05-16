@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-func TestTask_Create(t *testing.T) {
+func TestTaskCreate(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.Nil(t, err)
 
@@ -37,7 +37,7 @@ func TestTask_Create(t *testing.T) {
 	}
 }
 
-func TestTask_Create_for_error(t *testing.T) {
+func TestTaskCreateForError(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	require.NoError(t, err)
 
@@ -65,7 +65,7 @@ func TestTask_Create_for_error(t *testing.T) {
 
 }
 
-func TestTask_Delete(t *testing.T) {
+func TestTaskDelete(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.Nil(t, err)
 
@@ -91,7 +91,7 @@ func TestTask_Delete(t *testing.T) {
 	}
 }
 
-func TestTask_Delete_for_error(t *testing.T) {
+func TestTaskDeleteForError(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.Nil(t, err)
 
@@ -118,7 +118,7 @@ func TestTask_Delete_for_error(t *testing.T) {
 
 }
 
-func TestTask_Update(t *testing.T) {
+func TestTaskUpdate(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.Nil(t, err)
 
@@ -147,7 +147,7 @@ func TestTask_Update(t *testing.T) {
 
 }
 
-func TestTask_Update_for_error(t *testing.T) {
+func TestTaskUpdateForError(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	assert.Nil(t, err)
 
