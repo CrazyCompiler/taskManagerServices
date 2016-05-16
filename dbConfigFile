@@ -2,5 +2,5 @@
   "DB_USER":"postgres",
   "DB_PASSWORD":"postgres",
   "DB_NAME":"taskmanager",
-  "DB_SCHEMA":"taskTable"
+  "DB_SCHEMA":"task"
 }

@@ -3,14 +3,12 @@ package main
 import (
 	"os"
 	"database/sql"
-	"fmt"
 	"taskManagerServices/config"
 	"taskManagerServices/fileReaders"
 	"taskManagerServices/database"
 	"taskManagerServices/errorHandler"
-	"taskManagerServices/routers"
-	"net/http"
 	_ "github.com/lib/pq"
+	"taskManagerServices/routers"
 )
 
 func main() {
@@ -47,11 +45,7 @@ func main() {
 	}
 
 	defer context.Db.Close()
-	routers.HandleRequests(context)
 
-	err = http.ListenAndServe(":8080", nil)
-	if err != nil {
-		fmt.Println("their was error ", err)
-	}
+	routers.HandleRequests(context)
 
 }

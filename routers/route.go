@@ -5,6 +5,9 @@ import (
 	"net/http"
 	"taskManagerServices/config"
 	"taskManagerServices/handlers"
+	"io"
+	"golang.org/x/net/http2"
+	"log"
 )
 
 
@@ -17,8 +20,15 @@ func HandleRequests(context config.Context) {
 	r.HandleFunc("/tasks/{id:[0-9]+}", handlers.GetTasks(context)).Methods("GET")
 	r.HandleFunc("/tasks/{id:[0-9]+}", handlers.AddTask(context)).Methods("POST")
 	r.HandleFunc("/hello", func(res http.ResponseWriter, req *http.Request) {
-		res.Write([]byte("hello"))
+		io.WriteString(res, "hello, world!\n")
 	}).Methods("GET")
 
-	http.Handle("/", r)
+	srv := &http.Server{
+		Addr:    ":8080", // Normally ":443"
+		Handler: r,
+	}
+	http2.ConfigureServer(srv, &http2.Server{})
+	log.Fatal(srv.ListenAndServeTLS("server.cert", "server.key"))
+
+	//http.Handle("/", r)
 }

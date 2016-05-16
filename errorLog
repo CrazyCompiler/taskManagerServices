@@ -947,3 +947,7 @@ Line No 5,Column No 2: expected priority is High or Medium or Low, but got Hig
 2016/05/08 13:22:04 pq: column "user_id" does not exist
 2016/05/08 13:22:04 pq: column "user_id" does not exist
 2016/05/08 13:22:04 pq: column "user_id" does not exist
+2016/05/09 08:15:46 errors in the following line :
+Line No 5,Column No 2: expected priority is High or Medium or Low, but got Hig
+
+2016/05/13 11:26:17 pq: relation "task" does not exist

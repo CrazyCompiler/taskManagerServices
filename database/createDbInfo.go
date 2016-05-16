@@ -9,7 +9,7 @@ const (
 	DB_USER     = "postgres"
 	DB_PASSWORD = "postgres"
 	DB_NAME     = "taskmanager"
-	DB_SCHEMA   = "taskTable"
+	DB_SCHEMA   = "tasks"
 )
 
 func CreateDbInfo(dbConfig fileReaders.JsonObject) string {
